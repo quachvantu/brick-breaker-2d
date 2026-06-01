@@ -8,8 +8,8 @@ using System.Collections.Generic;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private PaddleMovement paddle;
-    public event EventHandler OnBallLost;
-    private float speed = 9f;
+    // public event EventHandler OnBallLost;
+    private float speed = 7f;
     private bool isLaunched = false;
     private Rigidbody2D rb;
     private void Start()
@@ -47,11 +47,11 @@ public class Ball : MonoBehaviour
             rb.velocity = direction * speed;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision2D)
-    {
-        if (collision2D.gameObject.GetComponent<WallBottom>())
-        {
-            OnBallLost?.Invoke(this, EventArgs.Empty);
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D collision2D)
+    // {
+    //     if (collision2D.gameObject.GetComponent<WallBottom>())
+    //     {
+    //         OnBallLost?.Invoke(this, EventArgs.Empty);
+    //     }
+    // }
 }

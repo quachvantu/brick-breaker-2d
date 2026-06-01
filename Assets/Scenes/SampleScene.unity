@@ -562,6 +562,77 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1114667137
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1114667138}
+  - component: {fileID: 1114667139}
+  m_Layer: 0
+  m_Name: BrickGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1114667138
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114667137}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.33, y: 3.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1114667139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114667137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bff24c234e497c941857385645147167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSprites:
+  - {fileID: 21300000, guid: 47ced99ae85758b45a7fbf53c724a5c6, type: 3}
+  - {fileID: 21300000, guid: fa7c3792f32163c4e82fd31a9e2b3131, type: 3}
+  - {fileID: 21300000, guid: e5cb818e3f5e2624e8369c0d814b72e3, type: 3}
+  - {fileID: 21300000, guid: 2a9e820f74d4f9e4588112903e5ca11d, type: 3}
+  - {fileID: 21300000, guid: 3cb4733fc124e98498d864d9c1cce83e, type: 3}
+  - {fileID: 21300000, guid: 852b8475765cebe40bc55aaec79bff6e, type: 3}
+  - {fileID: 21300000, guid: 9c65cd62f6436794993d1b4e8f8a70f1, type: 3}
+  - {fileID: 21300000, guid: 6dc5fbbfad824dc40bc725aa94bb57c1, type: 3}
+  - {fileID: 21300000, guid: 4b1395419edadb049b83174ded0b5b81, type: 3}
+  - {fileID: 21300000, guid: c7633357ca1664d4f80a29ba2fcd5f0b, type: 3}
+  damagedSprites:
+  - {fileID: 21300000, guid: f56b19d05e818344ab45a80a82970564, type: 3}
+  - {fileID: 21300000, guid: d3208529fa3cabb45a05cfe1b6740b1e, type: 3}
+  - {fileID: 21300000, guid: 122c3e8db32cdeb488dc8d9a66725d87, type: 3}
+  - {fileID: 21300000, guid: 14bdeb8df75c6d1418c1e48fb65d4284, type: 3}
+  - {fileID: 21300000, guid: 2b718e86a6b9ba64daf388df4eb9b177, type: 3}
+  - {fileID: 21300000, guid: f8d69be7ef1b1264ab191dbe7ca1301b, type: 3}
+  - {fileID: 21300000, guid: 602475f0f84e6184b8842017a9b21526, type: 3}
+  - {fileID: 21300000, guid: cebe9a3d6ca611c4a854069c26061726, type: 3}
+  - {fileID: 21300000, guid: 725a5da5e92681042a08194b3a39d7cd, type: 3}
+  - {fileID: 21300000, guid: b05b97e1ff55406408b32d05abe3445c, type: 3}
+  brickPrefabs: {fileID: 4367725109755060626, guid: 30ef817bad573ff4897768ab96354d21, type: 3}
+  rows: 5
+  columns: 16
+  brickWidth: 1.1
+  brickHeight: 0.37
 --- !u!1 &1377395276
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,3 +1009,4 @@ SceneRoots:
   - {fileID: 1765090117}
   - {fileID: 415122000}
   - {fileID: 2110432866}
+  - {fileID: 1114667138}
