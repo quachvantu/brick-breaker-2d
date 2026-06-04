@@ -3,15 +3,26 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 public class Ball : MonoBehaviour
 {
+    public static Ball Instance { get; private set; }
     [SerializeField] private PaddleMovement paddle;
-    // public event EventHandler OnBallLost;
+    public event EventHandler OnBallLost;
     private float speed = 7f;
     private bool isLaunched = false;
     private Rigidbody2D rb;
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,11 +58,11 @@ public class Ball : MonoBehaviour
             rb.velocity = direction * speed;
         }
     }
-    // private void OnTriggerEnter2D(Collider2D collision2D)
-    // {
-    //     if (collision2D.gameObject.GetComponent<WallBottom>())
-    //     {
-    //         OnBallLost?.Invoke(this, EventArgs.Empty);
-    //     }
-    // }
+    private void OnTriggerEnter2D(Collider2D collision2D)
+    {
+        if (collision2D.gameObject.GetComponent<WallBottom>())
+        {
+            OnBallLost?.Invoke(this, EventArgs.Empty);
+        }
+    }
 }

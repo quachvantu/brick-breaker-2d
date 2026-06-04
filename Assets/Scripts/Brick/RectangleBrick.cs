@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Brick : MonoBehaviour
+public class RectangleBrick : MonoBehaviour
 {
-    [SerializeField] private int hp;
+    private int hp;
     private Sprite normalSprite;
     private Sprite damagedSprite;
+    private int brickScore;
     [SerializeField] private SpriteRenderer spriteRenderer;
     public void SetSprites(Sprite normal, Sprite damaged, int hp)
     {
@@ -14,6 +15,7 @@ public class Brick : MonoBehaviour
         normalSprite = normal;
         damagedSprite = damaged;
         this.hp = hp;
+        brickScore = hp * 10;
     }
     private void OnCollisionEnter2D(Collision2D collision2D)
     {
@@ -28,8 +30,9 @@ public class Brick : MonoBehaviour
             {
                 spriteRenderer.sprite = damagedSprite;
             }
-            else
+            else if (hp == 0)
             {
+                GameManager.Instance.AddScore(brickScore);
                 Destroy(gameObject);
             }
         }
