@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PaddleMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
+    private float speed = GameManager.Instance.paddleSpeed;
     private Rigidbody2D rb;
     float targetX = 0f;
     private void Awake()

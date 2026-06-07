@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour
     public static Ball Instance { get; private set; }
     [SerializeField] private PaddleMovement paddle;
     public event EventHandler OnBallLost;
-    private float speed = 7f;
+    private float speed = GameManager.Instance.ballSpeed;
     private bool isLaunched = false;
     private Rigidbody2D rb;
     private void Awake()

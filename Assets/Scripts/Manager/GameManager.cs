@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     public State state;
     private static int lives = 3;
     private int totalScore = 0;
+    public float ballSpeed = 8f;
+    public float paddleSpeed = 10f;
     public enum State
     {
         Menu,
