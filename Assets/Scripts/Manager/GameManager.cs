@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] private Image[] heartImages;
+    public event Action<int> OnLivesChanged;
     public State state;
     private static int lives = 3;
     private int totalScore = 0;
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        Ball.Instance.OnBallLost += Ball_OnBallLost;
+
     }
     private void Update()
     {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     private void Ball_OnBallLost(object sender, EventArgs e)
     {
         lives--;
-        UpdateLivesUI();
+        OnLivesChanged?.Invoke(lives);
         if (lives <= 0)
         {
             state = State.GameOver;
@@ -58,13 +58,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Ball.Instance.SetIsLaunched(false);
-        }
-    }
-    private void UpdateLivesUI()
-    {
-        for (int i = heartImages.Length - 1; i >= 0; i--)
-        {
-            heartImages[i].enabled = i < lives;
         }
     }
     public void AddScore(int score)
@@ -76,5 +69,14 @@ public class GameManager : MonoBehaviour
     {
         this.state = state;
         Handle();
+    }
+
+    public void RegisterBall(Ball ball)
+    {
+        ball.OnBallLost += Ball_OnBallLost;
+    }
+    public void UnregisterBall(Ball ball)
+    {
+        ball.OnBallLost -= Ball_OnBallLost;
     }
 }

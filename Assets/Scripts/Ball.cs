@@ -27,6 +27,15 @@ public class Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    private void OnEnable()
+    {
+        GameManager.Instance.RegisterBall(this);
+    }
+    private void OnDisable()
+    {
+        GameManager.Instance.UnregisterBall(this);
+    }
     private void Update()
     {
         if (!isLaunched)
