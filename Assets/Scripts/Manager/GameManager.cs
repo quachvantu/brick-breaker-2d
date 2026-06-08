@@ -8,16 +8,21 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public event Action<int> OnLivesChanged;
+    public event Action<int> OnScoreChanged;
+    public event Action<float> OnTimeChanged;
     public State state;
     private static int lives = 3;
     private int totalScore = 0;
     public float ballSpeed = 8f;
     public float paddleSpeed = 10f;
+    private bool isTimerRunning = false;
+    private float timer = 0f;
     public enum State
     {
         Menu,
         Playing,
-        GameOver
+        GameOver,
+        YouWin
     }
 
     private void Awake()
@@ -35,6 +40,12 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
+        if (isTimerRunning)
+        {
+            timer += Time.deltaTime;
+            OnTimeChanged?.Invoke(timer);
+        }
+
         Handle();
     }
     private void Handle()
@@ -44,6 +55,8 @@ public class GameManager : MonoBehaviour
             case State.Menu:
                 break;
             case State.Playing:
+                break;
+            case State.YouWin:
                 break;
             case State.GameOver:
                 break;
@@ -65,7 +78,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int score)
     {
         totalScore += score;
-        Debug.Log("Score: " + totalScore);
+        OnScoreChanged?.Invoke(totalScore);
     }
     public void SetState(State state)
     {
@@ -80,5 +93,15 @@ public class GameManager : MonoBehaviour
     public void UnregisterBall(Ball ball)
     {
         ball.OnBallLost -= Ball_OnBallLost;
+    }
+
+    public void StartTimer()
+    {
+        timer = 0f;
+        isTimerRunning = true;
+    }
+    public void StopTimer()
+    {
+        isTimerRunning = false;
     }
 }

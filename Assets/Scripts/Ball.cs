@@ -45,6 +45,7 @@ public class Ball : MonoBehaviour
             {
                 isLaunched = true;
                 rb.velocity = new Vector2(UnityEngine.Random.Range(-1f, 1f), 1).normalized * speed;
+                GameManager.Instance.StartTimer();
             }
         }
     }
