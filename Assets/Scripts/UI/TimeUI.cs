@@ -17,6 +17,6 @@ public class TimerUI : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(obj / 60);
         int seconds = Mathf.FloorToInt(obj % 60);
-        timeText.text = string.Format("TIMER {00}:{00}", minutes, seconds);
+        timeText.text = string.Format("TIMER {0:00}:{1:00}", minutes, seconds);
     }
 }

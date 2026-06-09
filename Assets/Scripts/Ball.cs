@@ -16,7 +16,7 @@ public class Ball : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            // DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -75,7 +75,6 @@ public class Ball : MonoBehaviour
             OnBallLost?.Invoke(this, EventArgs.Empty);
         }
     }
-
     public void SetIsLaunched(bool launched)
     {
         isLaunched = launched;

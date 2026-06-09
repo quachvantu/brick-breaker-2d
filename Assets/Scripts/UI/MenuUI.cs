@@ -15,6 +15,10 @@ public class MenuUI : MonoBehaviour
         startButton.onClick.AddListener(() =>
         {
             SceneLoader.LoadScene(SceneLoader.Scene.Playing);
+            GameManager.Instance.SetState(GameManager.State.Playing);
+            // GameManager.Instance.SetState(GameManager.State.Playing);
+            // GameManager.Instance.Handle();
+
         });
         quitButton.onClick.AddListener(() =>
         {
@@ -27,7 +31,6 @@ public class MenuUI : MonoBehaviour
         speedBallSlider.onValueChanged.AddListener(OnSpeedChanged);
         speedPaddleSlider.value = GameManager.Instance.paddleSpeed;
         speedPaddleSlider.onValueChanged.AddListener(OnSpeedPaddleChanged);
-        Debug.Log(GameManager.Instance.paddleSpeed);
     }
 
     private void OnSpeedPaddleChanged(float value1)

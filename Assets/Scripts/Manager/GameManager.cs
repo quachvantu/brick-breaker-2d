@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     public event Action<float> OnTimeChanged;
     public State state;
     private static int lives = 3;
-    private int totalScore = 0;
+    private static int totalScore = 0;
     public float ballSpeed = 8f;
     public float paddleSpeed = 10f;
     private bool isTimerRunning = false;
@@ -38,6 +38,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    private void Start()
+    {
+        // state = State.Menu;
+        // Handle();
+        SetState(State.Menu);
+    }
     private void Update()
     {
         if (isTimerRunning)
@@ -45,20 +51,23 @@ public class GameManager : MonoBehaviour
             timer += Time.deltaTime;
             OnTimeChanged?.Invoke(timer);
         }
-
-        Handle();
     }
-    private void Handle()
+    public void Handle()
     {
         switch (state)
         {
             case State.Menu:
                 break;
             case State.Playing:
+                ResetScore();
+                ResetTimer();
+                ResetLives();
                 break;
             case State.YouWin:
                 break;
             case State.GameOver:
+                StopTimer();
+                GameOverUI.Instance.ShowGameOverUI();
                 break;
         }
     }
@@ -68,7 +77,7 @@ public class GameManager : MonoBehaviour
         OnLivesChanged?.Invoke(lives);
         if (lives <= 0)
         {
-            state = State.GameOver;
+            SetState(State.GameOver);
         }
         else
         {
@@ -97,11 +106,30 @@ public class GameManager : MonoBehaviour
 
     public void StartTimer()
     {
-        timer = 0f;
         isTimerRunning = true;
+    }
+    public void ResetTimer()
+    {
+        timer = 0f;
     }
     public void StopTimer()
     {
         isTimerRunning = false;
+    }
+    public int GetScore()
+    {
+        return totalScore;
+    }
+    public float GetTimer()
+    {
+        return timer;
+    }
+    public void ResetScore()
+    {
+        totalScore = 0;
+    }
+    public void ResetLives()
+    {
+        lives = 3;
     }
 }

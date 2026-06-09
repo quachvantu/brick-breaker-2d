@@ -11,7 +11,10 @@ public class LivesUI : MonoBehaviour
     {
         GameManager.Instance.OnLivesChanged += GameManager_OnLivesChanged;
     }
-
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnLivesChanged -= GameManager_OnLivesChanged;
+    }
     private void GameManager_OnLivesChanged(int lives)
     {
         UpdateLivesUI(lives);
