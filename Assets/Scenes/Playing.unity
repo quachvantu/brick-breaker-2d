@@ -462,7 +462,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 0.001
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1877,7 +1877,7 @@ Transform:
   m_GameObject: {fileID: 1114667137}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.792, y: 3.829, z: 0}
+  m_LocalPosition: {x: -7.792, y: 3.996, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1928,8 +1928,23 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d6f6b8be1c62f3f4ab26bf9c55f5dce8, type: 3}
   - {fileID: 21300000, guid: 365733fd1baf6b546afafeb2783fbec9, type: 3}
   - {fileID: 21300000, guid: e6ac2567ca33ae94788a252d8937f9fe, type: 3}
+  powerUpSprites:
+  - {fileID: 0}
+  - {fileID: 21300000, guid: f04a0df34411d0142b8804759bf6f915, type: 3}
+  - {fileID: 21300000, guid: 422cc4248f889f14a98b444793d4744e, type: 3}
+  - {fileID: 21300000, guid: 2c1790ead12440c4180f1b22fd7e101a, type: 3}
+  - {fileID: 21300000, guid: f0c150ae2e050d64a922183d985b03df, type: 3}
+  - {fileID: 21300000, guid: fba8406c745e6bb43b01c1ecc8d36c33, type: 3}
+  - {fileID: 21300000, guid: 3117d40b38c8d3c47a5c78b1e5d590b3, type: 3}
+  - {fileID: 21300000, guid: 3f929447a6046c14db4dd8e03af90a89, type: 3}
+  - {fileID: 21300000, guid: eb9a1d9e0ff300a4c8d449506d8e083b, type: 3}
+  - {fileID: 21300000, guid: a6f4c926fdbb3b94da53961ffbadb8ff, type: 3}
+  - {fileID: 21300000, guid: 4c842256eed8e8f43af9a1dec523cc6d, type: 3}
+  - {fileID: 21300000, guid: 63e8af7de60f95d4b8c9c67a53a35f7e, type: 3}
+  - {fileID: 21300000, guid: 35be07c9ab55f45499befcf7a81b32ee, type: 3}
   rectangleBrickPrefab: {fileID: 4367725109755060626, guid: 30ef817bad573ff4897768ab96354d21, type: 3}
   squareBrickPrefab: {fileID: 3299074420887410004, guid: 9f6c736f6f1b4384f8420529f3be653a, type: 3}
+  powerUpPrefab: {fileID: 3710446179222196184, guid: 267561af128ace44cac1bf2edf8eee72, type: 3}
 --- !u!1 &1139353046
 GameObject:
   m_ObjectHideFlags: 0
@@ -2445,8 +2460,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0027694704, y: 0.0015963321}
-  m_Size: {x: 1.8135524, y: 0.36935997}
+  m_Offset: {x: -0.0011744499, y: 0.001596332}
+  m_Size: {x: 1.3957964, y: 0.3693636}
   m_Direction: 1
 --- !u!1 &1836236678
 GameObject:

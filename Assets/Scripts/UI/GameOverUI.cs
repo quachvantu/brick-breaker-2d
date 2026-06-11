@@ -4,8 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
-
-
 public class GameOverUI : MonoBehaviour
 {
     public static GameOverUI Instance { get; private set; }

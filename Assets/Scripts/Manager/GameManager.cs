@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     public State state;
     private static int lives = 3;
     private static int totalScore = 0;
-    public float ballSpeed = 8f;
+    public float ballSpeed = 7f;
     public float paddleSpeed = 10f;
     private bool isTimerRunning = false;
     private float timer = 0f;

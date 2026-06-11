@@ -365,7 +365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 50.000053, y: 49.999817}
+  m_AnchoredPosition: {x: 50, y: 49.999756}
   m_SizeDelta: {x: -99.999886, y: 100.00037}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &285302984
@@ -753,8 +753,8 @@ MonoBehaviour:
   m_FillRect: {fileID: 2098928658}
   m_HandleRect: {fileID: 617591503}
   m_Direction: 0
-  m_MinValue: 6
-  m_MaxValue: 10
+  m_MinValue: 5
+  m_MaxValue: 9
   m_WholeNumbers: 1
   m_Value: 6
   m_OnValueChanged:
@@ -1248,8 +1248,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
-  ballSpeed: 8
-  speedPaddle: 10
+  ballSpeed: 7
+  paddleSpeed: 13
 --- !u!4 &1149552267
 Transform:
   m_ObjectHideFlags: 0
@@ -1348,10 +1348,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 104927294}
   m_HandleRect: {fileID: 1795450408}
   m_Direction: 0
-  m_MinValue: 8
-  m_MaxValue: 12
+  m_MinValue: 11
+  m_MaxValue: 15
   m_WholeNumbers: 1
-  m_Value: 8
+  m_Value: 11
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

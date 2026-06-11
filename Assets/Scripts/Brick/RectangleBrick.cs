@@ -1,21 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class RectangleBrick : MonoBehaviour
 {
+    public static RectangleBrick Instance { get; private set; }
+    private PowerUpType powerUpType = PowerUpType.None;
+    public static event EventHandler OnDestroyRectangleBrick;
     private int hp;
     private Sprite normalSprite;
     private Sprite damagedSprite;
     private int brickScore;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    public void SetSprites(Sprite normal, Sprite damaged, int hp)
+    private void Start()
     {
-        spriteRenderer.sprite = hp >= 2 ? normal : damaged;
-        normalSprite = normal;
-        damagedSprite = damaged;
-        this.hp = hp;
-        brickScore = hp * 10;
+        Instance = this;
     }
     private void OnCollisionEnter2D(Collision2D collision2D)
     {
@@ -33,8 +34,27 @@ public class RectangleBrick : MonoBehaviour
             else if (hp == 0)
             {
                 GameManager.Instance.AddScore(brickScore);
+                OnDestroyRectangleBrick?.Invoke(this, EventArgs.Empty);
                 Destroy(gameObject);
             }
         }
+    }
+
+    public void SetSprites(Sprite normal, Sprite damaged, int hp)
+    {
+        spriteRenderer.sprite = hp >= 2 ? normal : damaged;
+        normalSprite = normal;
+        damagedSprite = damaged;
+        this.hp = hp;
+        brickScore = hp * 10;
+    }
+
+    public PowerUpType GetPowerUpType()
+    {
+        return powerUpType;
+    }
+    public void SetPowerUpType(PowerUpType powerUpType)
+    {
+        this.powerUpType = powerUpType;
     }
 }
