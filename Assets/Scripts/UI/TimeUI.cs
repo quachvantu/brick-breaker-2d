@@ -12,7 +12,13 @@ public class TimerUI : MonoBehaviour
     {
         GameManager.Instance.OnTimeChanged += GameManager_OnTimeChanged;
     }
-
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnTimeChanged -= GameManager_OnTimeChanged;
+        }
+    }
     private void GameManager_OnTimeChanged(float obj)
     {
         int minutes = Mathf.FloorToInt(obj / 60);

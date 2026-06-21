@@ -11,6 +11,13 @@ public class ScoreUI : MonoBehaviour
     {
         GameManager.Instance.OnScoreChanged += GameManager_OnScoreChanged;
     }
+    private void OnDestroy()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnScoreChanged -= GameManager_OnScoreChanged;
+        }
+    }
 
     private void GameManager_OnScoreChanged(int obj)
     {

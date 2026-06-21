@@ -38,6 +38,11 @@ public class BrickGrid : MonoBehaviour
         RectangleBrick.OnDestroyRectangleBrick += RectangleBrick_OnDestroyRectangleBrick;
         SquareBrick.OnDestroySquareBrick += SquareBrick_OnDestroySquareBrick;
     }
+    private void OnDestroy()
+    {
+        RectangleBrick.OnDestroyRectangleBrick -= RectangleBrick_OnDestroyRectangleBrick;
+        SquareBrick.OnDestroySquareBrick -= SquareBrick_OnDestroySquareBrick;
+    }
     private void SquareBrick_OnDestroySquareBrick(object sender, System.EventArgs e)
     {
         SquareBrick brick = (SquareBrick)sender;
@@ -47,6 +52,7 @@ public class BrickGrid : MonoBehaviour
         }
         GameObject powerUp = Instantiate(powerUpPrefab, brick.transform.position, Quaternion.identity);
         powerUp.GetComponentInChildren<SpriteRenderer>().sprite = powerUpSprites[(int)brick.GetPowerUpType()];
+        powerUp.GetComponent<PowerUp>().SetPowerUpType(brick.GetPowerUpType());
     }
     private void RectangleBrick_OnDestroyRectangleBrick(object sender, System.EventArgs e)
     {
@@ -57,6 +63,7 @@ public class BrickGrid : MonoBehaviour
         }
         GameObject powerUp = Instantiate(powerUpPrefab, brick.transform.position, Quaternion.identity);
         powerUp.GetComponentInChildren<SpriteRenderer>().sprite = powerUpSprites[(int)brick.GetPowerUpType()];
+        powerUp.GetComponent<PowerUp>().SetPowerUpType(brick.GetPowerUpType());
     }
     private void CreateBrickGrid()
     {

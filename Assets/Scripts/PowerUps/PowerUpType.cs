@@ -11,6 +11,6 @@ public enum PowerUpType
     Flash,
     MultiBall,
     FireBall,
-    PowerBall,
+    BombBall,
     PaddleShoot,
 }

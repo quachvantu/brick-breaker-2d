@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public event Action<int> OnLivesChanged;
     public event Action<int> OnScoreChanged;
     public event Action<float> OnTimeChanged;
+    private List<Ball> registeredBalls = new List<Ball>();
     public State state;
     private static int lives = 3;
     private static int totalScore = 0;
@@ -24,7 +25,6 @@ public class GameManager : MonoBehaviour
         GameOver,
         YouWin
     }
-
     private void Awake()
     {
         if (Instance == null)
@@ -36,12 +36,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
     private void Start()
     {
-        // state = State.Menu;
-        // Handle();
         SetState(State.Menu);
     }
     private void Update()
@@ -73,6 +70,14 @@ public class GameManager : MonoBehaviour
     }
     private void Ball_OnBallLost(object sender, EventArgs e)
     {
+        Ball ball = (Ball)sender;
+        ball.OnBallLost -= Ball_OnBallLost;
+        registeredBalls.Remove(ball);
+        if (registeredBalls.Count > 0)
+        {
+            Destroy(ball.gameObject);
+            return;
+        }
         lives--;
         OnLivesChanged?.Invoke(lives);
         if (lives <= 0)
@@ -81,7 +86,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Ball.Instance.SetIsLaunched(false);
+            ball.SetIsLaunched(false);
+            RegisterBall(ball);
         }
     }
     public void AddScore(int score)
@@ -94,16 +100,16 @@ public class GameManager : MonoBehaviour
         this.state = state;
         Handle();
     }
-
     public void RegisterBall(Ball ball)
     {
+        registeredBalls.Add(ball);
         ball.OnBallLost += Ball_OnBallLost;
     }
     public void UnregisterBall(Ball ball)
     {
+        registeredBalls.Remove(ball);
         ball.OnBallLost -= Ball_OnBallLost;
     }
-
     public void StartTimer()
     {
         isTimerRunning = true;

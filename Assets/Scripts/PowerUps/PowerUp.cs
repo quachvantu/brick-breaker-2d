@@ -5,21 +5,28 @@ using UnityEngine;
 
 public class PowerUp : MonoBehaviour
 {
-    public event EventHandler OnPowerUp;
+    private PowerUpType powerUpType = PowerUpType.None;
+    public static event EventHandler<PowerUpType> OnPowerUp;
     private bool isCollected = false;
+    private void Awake()
+    {
+    }
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         if (isCollected) return;
-        if (collision2D.gameObject.GetComponent<PaddleMovement>())
+        if (collision2D.gameObject.GetComponent<Paddle>())
         {
             isCollected = true;
-            OnPowerUp?.Invoke(this, EventArgs.Empty);
-            Debug.Log("Chạm paddle");
+            OnPowerUp?.Invoke(this, powerUpType);
             Destroy(gameObject);
         }
         if (collision2D.gameObject.GetComponent<WallBottom>())
         {
             Destroy(gameObject);
         }
+    }
+    public void SetPowerUpType(PowerUpType powerUpType)
+    {
+        this.powerUpType = powerUpType;
     }
 }
