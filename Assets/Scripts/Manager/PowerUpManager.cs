@@ -11,7 +11,6 @@ public class PowerUpManager : MonoBehaviour
     public event EventHandler OffIsFireBall;
     public event EventHandler OnIsBombBall;
     public event EventHandler OffIsBombBall;
-    private event EventHandler OnIsShootPaddle;
     private bool isFireBall = false;
     private bool isBombBall = false;
     private bool isShootPaddle = false;
@@ -21,7 +20,6 @@ public class PowerUpManager : MonoBehaviour
         public float duration;
         public Action OnExpire;
         public string tag;
-
     }
     private List<Timer> timers = new List<Timer>();
     private void Awake()
@@ -29,7 +27,6 @@ public class PowerUpManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            PowerUp.OnPowerUp -= PowerUp_OnPowerUp;
             PowerUp.OnPowerUp += PowerUp_OnPowerUp;
         }
         else
@@ -62,22 +59,15 @@ public class PowerUpManager : MonoBehaviour
         switch (e)
         {
             case PowerUpType.WidthIncrease:
-                if (isShootPaddle)
-                {
-                    isShootPaddle = false;
-                }
                 Paddle.Instance.PaddleWidthIncrease();
                 StartTimer(10f,
                 () =>
                 {
                     Paddle.Instance.ResetPaddleWidth();
-                }, "paddle");
+                },
+                "paddle");
                 break;
             case PowerUpType.WidthDecrease:
-                if (isShootPaddle)
-                {
-                    isShootPaddle = false;
-                }
                 Paddle.Instance.PaddleWidthDecrease();
                 StartTimer(10f,
                 () =>
@@ -117,7 +107,7 @@ public class PowerUpManager : MonoBehaviour
                 }
                 isFireBall = true;
                 OnIsFireBall?.Invoke(this, EventArgs.Empty);
-                StartTimer(5f, () =>
+                StartTimer(4f, () =>
                 {
                     isFireBall = false;
                     OffIsFireBall?.Invoke(this, EventArgs.Empty);
@@ -131,7 +121,7 @@ public class PowerUpManager : MonoBehaviour
                 }
                 isBombBall = true;
                 OnIsBombBall?.Invoke(this, EventArgs.Empty);
-                StartTimer(5f, () =>
+                StartTimer(4f, () =>
                 {
                     isBombBall = false;
                     OffIsBombBall?.Invoke(this, EventArgs.Empty);
@@ -139,9 +129,13 @@ public class PowerUpManager : MonoBehaviour
                 break;
             case PowerUpType.PaddleShoot:
                 isShootPaddle = true;
-                OnIsShootPaddle?.Invoke(this, EventArgs.Empty);
                 Paddle.Instance.PaddleShoot();
-                StartTimer(10f, () => isShootPaddle = false, "shoot_paddle");
+                StartTimer(5f, () =>
+                {
+                    isShootPaddle = false;
+                    Paddle.Instance.ResetPaddleWidth();
+                }
+                , "shoot_paddle");
                 break;
         }
     }

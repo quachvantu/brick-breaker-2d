@@ -21,6 +21,14 @@ public class Ball : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         speed = GameManager.Instance.ballSpeed;
     }
+    private void OnDestroy()
+    {
+        if (Instance == this)
+        {
+            List<Ball> balls = GameManager.Instance.GetBalls();
+            Instance = balls.Count > 0 ? balls[0] : null;
+        }
+    }
     private void OnEnable()
     {
         GameManager.Instance.RegisterBall(this);

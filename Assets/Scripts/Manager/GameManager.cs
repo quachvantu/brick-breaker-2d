@@ -110,6 +110,10 @@ public class GameManager : MonoBehaviour
         registeredBalls.Remove(ball);
         ball.OnBallLost -= Ball_OnBallLost;
     }
+    public List<Ball> GetBalls()
+    {
+        return registeredBalls;
+    }
     public void StartTimer()
     {
         isTimerRunning = true;

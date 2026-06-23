@@ -13,6 +13,7 @@ public class Paddle : MonoBehaviour
     [SerializeField] private SpriteRenderer paddleSprite;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Sprite[] sprites;
+    [SerializeField] private Animator paddleAnimator;
     private float targetX = 0f;
     private float timer = 0f;
     private void Awake()
@@ -57,24 +58,23 @@ public class Paddle : MonoBehaviour
 
     public void PaddleWidthIncrease()
     {
-        paddleSprite.sprite = sprites[1];
-        paddleCollider2D.size = new Vector2(2f, paddleCollider2D.size.y);
+        paddleSprite.size += new Vector2(0.6f, 0f);
+        paddleCollider2D.size += new Vector2(0.6f, 0f);
     }
     public void PaddleWidthDecrease()
     {
-        paddleSprite.sprite = sprites[2];
-        paddleCollider2D.size = new Vector2(0.67f, paddleCollider2D.size.y);
+        paddleSprite.size -= new Vector2(0.6f, 0f);
+        paddleCollider2D.size -= new Vector2(0.6f, 0f);
     }
     public void ResetPaddleWidth()
     {
-        paddleSprite.sprite = sprites[0];
-        paddleCollider2D.size = new Vector2(1.4f, paddleCollider2D.size.y);
+        paddleAnimator.SetBool("Shoot", false);
+        paddleSprite.size = new Vector2(1.4f, 0.37f);
+        paddleCollider2D.size = new Vector2(1.4f, 0.37f);
     }
     public void PaddleShoot()
     {
-        paddleSprite.sprite = sprites[3];
-        paddleCollider2D.size = new Vector2(1.4f, paddleCollider2D.size.y);
-
+        paddleAnimator.SetBool("Shoot", true);
     }
     private void CreateBullet()
     {

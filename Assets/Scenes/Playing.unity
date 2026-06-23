@@ -772,6 +772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c11bf1e780a3c84d9284571b0662e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailRenderer: {fileID: 306083563}
+  trailRenderer_1: {fileID: 1376371483}
+  trailParticle: {fileID: 216651751}
+  pointLight: {fileID: 311312247}
 --- !u!1 &311312244
 GameObject:
   m_ObjectHideFlags: 0
@@ -977,7 +981,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.001
+  m_GravityScale: 0.01
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1916,6 +1920,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0841468fa9ef521458e9c2376e7cec27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailRenderer: {fileID: 631838621}
+  trailRenderer_1: {fileID: 1700454003}
+  trailParticle: {fileID: 154285099}
+  pointLight: {fileID: 558068597}
 --- !u!1 &696197200
 GameObject:
   m_ObjectHideFlags: 0
@@ -2993,6 +3001,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1377395277}
   - component: {fileID: 1377395278}
+  - component: {fileID: 1377395279}
   m_Layer: 0
   m_Name: PaddleVisual
   m_TagString: Untagged
@@ -3010,7 +3019,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9999998, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1765090117}
@@ -3060,13 +3069,34 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.385714, y: 0.36571428}
+  m_DrawMode: 2
+  m_Size: {x: 1.4, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1377395279
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377395276}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dc175d2bcee0c0d4fa31aa987158d45c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1457360145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3597,9 +3627,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 414215806102183458, guid: dbb605cd6014e5e479974be40a49da66, type: 3}
   sprites:
   - {fileID: 21300000, guid: fe9aad761ea2c584ea2e44d27dd3acea, type: 3}
-  - {fileID: 21300000, guid: 448d6042b3f443944958b620cc03cda5, type: 3}
-  - {fileID: 21300000, guid: 17ae8c9d176bc2e4eb893e64d1c5f1dd, type: 3}
   - {fileID: 21300000, guid: 0b2bdcc3bbcad7f4caa25b656af9ee60, type: 3}
+  paddleAnimator: {fileID: 1377395279}
 --- !u!1 &1836236678
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,6 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eff93c4e675eaa44b10061aec154867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  score100: {fileID: 0}
 --- !u!4 &1859237013
 Transform:
   m_ObjectHideFlags: 0

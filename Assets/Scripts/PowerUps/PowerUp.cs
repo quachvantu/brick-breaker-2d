@@ -8,9 +8,7 @@ public class PowerUp : MonoBehaviour
     private PowerUpType powerUpType = PowerUpType.None;
     public static event EventHandler<PowerUpType> OnPowerUp;
     private bool isCollected = false;
-    private void Awake()
-    {
-    }
+    [SerializeField] private Animator powerUpAnimator;
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         if (isCollected) return;
@@ -28,5 +26,9 @@ public class PowerUp : MonoBehaviour
     public void SetPowerUpType(PowerUpType powerUpType)
     {
         this.powerUpType = powerUpType;
+        if (powerUpType == PowerUpType.Score100)
+        {
+            powerUpAnimator.enabled = true;
+        }
     }
 }
